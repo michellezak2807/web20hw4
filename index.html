@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joe's Hotdog Stand Order</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+  // Constants for item prices
+  const HOTDOG_PRICE = 4.65;
+  const FRIES_PRICE = 3.75;
+  const SODA_PRICE = 1.89;
+
+  // Function to round a floating point number to exactly 2 decimal places
+  function showMoney(amount) {
+    // Round the amount to 2 decimal places
+    const roundedAmount = Math.round(amount * 100) / 100;
+    
+    // Convert the rounded amount to a string
+    let amountString = roundedAmount.toString();
+    
+    // Check if the amount has decimal places
+    if (!amountString.includes('.')) {
+        // If the amount is a whole number, append '.00'
+        amountString += '.00';
+    } else {
+        // If the amount has only one decimal place, append '0'
+        const decimalIndex = amountString.indexOf('.');
+        if (amountString.length - decimalIndex === 2) {
+            amountString += '0';
+        }
+    }
+    
+    // Add '$' symbol and return the formatted amount
+    return amountString;
+}
+
+
+  // Function to calculate the subtotal before any discounts
+  function calculateSubtotal(numDogs, numFries, numSoda) {
+    return HOTDOG_PRICE * numDogs + FRIES_PRICE * numFries + SODA_PRICE * numSoda;
+  }
+
+  // Function to calculate discount based on subtotal
+  function calculateDiscount(subtotal) {
+    if (subtotal >= 25) {
+      return subtotal * 0.10;
+    } else {
+      return 0.00;
+    }
+  }
+
+  // Function to calculate the final total including tax
+  function calculateTotal(subtotal, discount) {
+    const taxRate = 0.0625; // 6.25% Massachusetts meals tax
+    return subtotal - discount + (subtotal - discount) * taxRate;
+  }
+
+  // Main function to process the order
+  function processOrder() {
+    // Get user input for quantities
+    const numDogs = parseInt(prompt("How many hotdogs do you want?") || 0);
+    const numFries = parseInt(prompt("How many fries do you want?") || 0);
+    const numSoda = parseInt(prompt("How many sodas do you want?") || 0);
+
+    // Calculate subtotal
+    const subtotal = calculateSubtotal(numDogs, numFries, numSoda);
+    
+    // Calculate discount
+    const discount = calculateDiscount(subtotal);
+
+    // Calculate total
+    const total = calculateTotal(subtotal, discount);
+
+// Display order information
+document.getElementById("orderInfo").innerHTML = `
+      <table class="order-table">
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Total Cost</th>
+        </tr>
+        <tr>
+          <td>Hotdogs</td>
+          <td>${numDogs}</td>
+          <td>$${showMoney(HOTDOG_PRICE * numDogs)}</td>
+        </tr>
+        <tr>
+          <td>Fries</td>
+          <td>${numFries}</td>
+          <td>$${showMoney(FRIES_PRICE * numFries)}</td>
+        </tr>
+        <tr>
+          <td>Sodas</td>
+          <td>${numSoda}</td>
+          <td>$${showMoney(SODA_PRICE * numSoda)}</td>
+        </tr>
+        <tr>
+          <td colspan="2">Subtotal Before Discount:</td>
+          <td>$${showMoney(subtotal)}</td>
+        </tr>
+        <tr>
+          <td colspan="2">Discount:</td>
+          <td>$${showMoney(discount)}</td>
+        </tr>
+        <tr>
+          <td colspan="2">Subtotal After Discount:</td>
+          <td>$${showMoney(subtotal - discount)}</td>
+        </tr>
+        <tr>
+          <td colspan="2">Tax Amount:</td>
+          <td>$${showMoney((subtotal - discount) * 0.0625)}</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Final Total:</strong></td>
+          <td><strong>$${showMoney(total)}</strong></td>
+        </tr>
+      </table>
+    `;
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <h1>Welcome to Joe's Hotdog Stand!</h1>
+  <button onclick="processOrder()">Place Order</button>
+  <div id="orderInfo"></div>
+</div>
+<footer>
+    <p>&copy; Joe's Hot Dogs. All rights reserved.</p>
+</footer>
+</body>
+</html>
