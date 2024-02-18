@@ -46,7 +46,7 @@ button:hover {
 }
 
 footer {
-    background-color: #F48E57;
+    background-color: #007bff;
     color: white;
     text-align: center;
     padding: 20px;
@@ -62,11 +62,11 @@ footer {
   .order-table th, .order-table td {
     padding: 12px; /* Increased padding for better spacing */
     text-align: center; /* Center text horizontally */
-    border-bottom: 1px solid #dee2e6; /* Light grey border */
+    border-bottom: 1px solid #dee2e6; 
   }
   
   .order-table th {
-    background-color: #007bff; /* Blue header */
+    background-color: #007bff;
     color: #fff;
   }
   
