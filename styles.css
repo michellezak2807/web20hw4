@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+  
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+  
+h1 {
+    text-align: center;
+}
+  
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+button:hover {
+    background-color: #0056b3;
+}
+  
+.order-info {
+    margin-top: 20px;
+}
+  
+.order-info p {
+    margin: 10px 0;
+}
+  
+.order-info strong {
+    color: #007bff;
+}
+
+footer {
+    background-color: #F48E57;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .order-table th, .order-table td {
+    padding: 12px; /* Increased padding for better spacing */
+    text-align: center; /* Center text horizontally */
+    border-bottom: 1px solid #dee2e6; /* Light grey border */
+  }
+  
+  .order-table th {
+    background-color: #007bff; /* Blue header */
+    color: #fff;
+  }
+  
+  .order-table td:first-child {
+    font-weight: bold;
+  }
+  
+  .order-table strong {
+    color: #28a745; /* Green total */
+  }
+  
