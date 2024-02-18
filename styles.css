@@ -81,6 +81,6 @@ footer {
 .stand-image {
   display: block;
   margin: 20px auto; /* Center the image horizontally */
-  max-width: 80%; /* Limit the maximum width of the image */
+  max-width: 40%; /* Limit the maximum width of the image */
   height: auto; /* Maintain aspect ratio */
 }
